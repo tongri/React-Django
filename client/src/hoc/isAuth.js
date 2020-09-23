@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getMe } from "../api/queries/index";
+import { verifyToken, getMe } from "../api/queries/index";
 export const isAuth = WrappedComponent => {
   class Comp extends React.Component {
     constructor(props) {
@@ -11,20 +11,21 @@ export const isAuth = WrappedComponent => {
     }
     async componentDidMount() {
       try {
-        const response = await getMe(localStorage.getItem("token"));
-        console.log("me", response);
-        this.setState({ user: response.data });
-        const token = response.data.auth_token;
-        if (token !== localStorage.getItem("token")) {
-          this.props.history.push("/login");
+        const response = await verifyToken();
+        const me = await getMe(localStorage.getItem('token'))
+
+        this.setState({user: me.data} )
+
+        if(!response.data.verified)  {
+          this.props.history.push("/login")
         }
       } catch (error) {
         console.log("error", error);
-        return this.props.history.push("/login");
       }
     }
 
     render() {
+      console.log(this.state.user)
       return <WrappedComponent {...this.props} user={this.state.user} />;
     }
   }

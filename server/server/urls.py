@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import  url
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -17,6 +18,7 @@ urlpatterns = [
     path('auth/', include('accounts.urls')),
     path('api/', include(router.urls)),
     path('api/users/me/', account_views.UserViewSet.as_view({'pk': 'me'})),
+    url('api/token/verify-token/', account_views.VerifyToken.as_view())
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,

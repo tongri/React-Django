@@ -11,3 +11,4 @@ export const CRUD_TASKS = BACKEND_URL + "/api/tasks/"; //task id
 export const GET_ALL_TASKS = BACKEND_URL + "/api/tasks/?all";
 export const PAGINATE_TASKS = BACKEND_URL + "/api/tasks/?page=";
 export const USERS = BACKEND_URL + "/api/users/";
+export  const VERIFY_TOKEN =  BACKEND_URL + '/api/token/verify-token/'

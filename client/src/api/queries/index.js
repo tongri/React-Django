@@ -174,3 +174,13 @@ export const deleteTask = async taskId => {
   });
   return response;
 };
+
+export const verifyToken = async () => {
+  const response = await axios({
+    method: 'get',
+    url: API_URL.VERIFY_TOKEN,
+    headers: { Authorization: `Token ${localStorage.getItem("token")}` },
+
+  })
+  return response;
+}

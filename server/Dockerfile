@@ -1,4 +1,4 @@
-FROM python:3.7.2
+FROM python:3.9
 
 # -- Install Pipenv stable
 RUN pip install pipenv==v2018.10.9 --upgrade pip  

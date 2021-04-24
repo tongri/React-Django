@@ -8,6 +8,15 @@ const tokenInitialState = {
 const tasksInitialState = {
   data: []
 };
+
+const boardsInitialState = {
+  data: []
+};
+
+const topicsInitialState = {
+  data: []
+};
+
 const user = (state = tokenInitialState, action) => {
   switch (action.type) {
     case actionType.SET_TOKEN:
@@ -34,9 +43,39 @@ const tasks = (state = tasksInitialState, action) => {
   }
 };
 
+const boards = (state = boardsInitialState, action) => {
+  switch (action.type) {
+    case "SET_BOARD":
+      
+      return {
+        ...state,
+        data: action.data
+      }
+
+    default:
+      return state;
+  }
+}
+
+const topics = (state = topicsInitialState, action) => {
+  switch (action.type) {
+    case "SET_TOPIC":
+      
+      return {
+        ...state,
+        data: action.data
+      }
+
+    default:
+      return state;
+  }
+}
+
 const appReducer = combineReducers({
-  user,
-  tasks
+  //user,
+  //tasks
+  boards,
+  topics,
 });
 
 const rootReducer = (state, action) => {

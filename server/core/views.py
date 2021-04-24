@@ -11,5 +11,5 @@ from .utils import StandardResultsSetPagination
 class TaskViewSet(viewsets.ModelViewSet):
     serializer_class = TaskSerializer
     queryset = Task.objects.all()
-    permission_classes = [IsAuthenticated]
+    permission_classes = (IsAuthenticated, )
     pagination_class = StandardResultsSetPagination

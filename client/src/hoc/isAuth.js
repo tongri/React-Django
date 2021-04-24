@@ -6,7 +6,7 @@ export const isAuth = WrappedComponent => {
     constructor(props) {
       super(props);
       this.state = {
-        user: null
+        user: "loading"
       };
     }
     async componentDidMount() {
@@ -25,7 +25,6 @@ export const isAuth = WrappedComponent => {
     }
 
     render() {
-      console.log(this.state.user)
       return <WrappedComponent {...this.props} user={this.state.user} />;
     }
   }

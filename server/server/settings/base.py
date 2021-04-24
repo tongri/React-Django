@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     # local
     'accounts',
     'core',
+    'boards',
 ]
 
 SITE_ID = 1
@@ -97,9 +98,9 @@ WSGI_APPLICATION = 'server.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": os.environ.get("DATABASE_NAME", "boilerplate"),
-        "USER": os.environ.get("DATABASE_USER", "boilerplate"),
-        "PASSWORD": os.environ.get("DATABASE_PASSWORD", "boilerplate"),
+        "NAME": os.environ.get("DATABASE_NAME", "full_stack"),
+        "USER": os.environ.get("DATABASE_USER", "antoha"),
+        "PASSWORD": os.environ.get("DATABASE_PASSWORD", "103856"),
         "HOST": os.environ.get("DATABASE_HOST", "localhost"),
         "PORT": os.environ.get("DATABASE_PORT", 5432),
     }
@@ -129,9 +130,12 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         # 'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.TokenAuthentication',
+        'accounts.custom_auth.CustomTokenAuthentication',
+        #'rest_framework.authentication.TokenAuthentication',
 
     ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 5
 }
 REST_AUTH_REGISTER_SERIALIZERS = {
     'REGISTER_SERIALIZER': 'accounts.serializers.RegisterSerializer',

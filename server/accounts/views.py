@@ -11,7 +11,7 @@ from .serializers import UserSerializer
 class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     queryset = User.objects.all()
-    permission_classes = [IsAuthenticated]
+    permission_classes = (IsAuthenticated, )
 
     def get_object(self):
         if self.kwargs.get('pk', None) == 'me':
@@ -21,7 +21,8 @@ class UserViewSet(viewsets.ModelViewSet):
 
 class VerifyToken(APIView):
     def get(self, request):
-        token_header = request.headers['Authorization'].split(' ')
+        token_header = request.headers.get('Authorization')
+        token_header = token_header.split(' ') if token_header else ''
         if len(token_header) == 2:
             token = token_header[1]
         else:

@@ -5,6 +5,7 @@ import IosRemoveCircleOutline from "react-ionicons/lib/IosRemoveCircleOutline";
 import IosCreateOutline from "react-ionicons/lib/IosCreateOutline";
 import Pagination from "./PaginateTable";
 
+
 class TaskTable extends React.Component {
   render() {
     const columns = [

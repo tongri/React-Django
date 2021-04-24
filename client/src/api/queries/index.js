@@ -129,6 +129,19 @@ export const getTask = async (all = false, page = null) => {
   }
 };
 
+export const getBoards = async (page = null) => {
+  const res = await fetch(API_URL.PAGINATE_BOARDS);
+  const body = await res.json();
+  return body;
+};
+
+export const getTopics = async (id, page = null) => {
+  const res = await fetch(API_URL.GET_TOPICS + id);
+  const body = await res.json();
+  console.log("body", body);
+  return body;
+}
+
 export const createTask = async values => {
   const response = await axios({
     method: "post",

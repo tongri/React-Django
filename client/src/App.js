@@ -15,6 +15,7 @@ import "./App.css";
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const Profile = lazy(() => import("./pages/Dashboard/Profile"));
 const Tasks = lazy(() => import("./pages/Dashboard/Tasks"));
+const Boards = lazy(() => import("./pages/Boards"));
 const ConfirmEmail = lazy(() => import("./pages/ConfirmEmail"));
 const ResetPassword = lazy(() => import("./pages/ResetPassword"));
 
@@ -32,6 +33,11 @@ class App extends Component {
                 exact
                 path={path.DASHBOARD}
                 render={props => <Dashboard {...props} />}
+              />
+              <Route
+                exact
+                path={path.BOARDS}
+                render={props => <Boards {...props} />}
               />
               <Route
                 exact

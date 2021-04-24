@@ -12,3 +12,14 @@ export const setTask = data => ({
   type: actionType.SET_TASK,
   data
 });
+
+
+export const setBoard = data => ({
+  type: actionType.SET_BOARD,
+  data
+})
+
+export const setTopic = data => ({
+  type: actionType.SET_TOPIC,
+  data
+})

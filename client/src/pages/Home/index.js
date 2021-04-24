@@ -16,6 +16,9 @@ const Home = () => (
     <p>
       <Link to={path.DASHBOARD}>dashboard</Link>
     </p>
+    <p>
+      <Link to={path.BOARDS}>boards</Link>
+    </p>
   </div>
 );
 export default Home;
